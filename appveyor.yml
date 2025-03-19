@@ -1,0 +1,10 @@
+# Configuración para compilar en Windows con PyInstaller
+image: Visual Studio 2022
+
+build_script:
+  - cmd: pip install pyinstaller pandas matplotlib tk
+  - cmd: pyinstaller --onefile --windowed NTGS-Tubos.py
+
+artifacts:
+  - path: dist\NTGS-Tubos.exe
+    name: NTGS-Tubos
