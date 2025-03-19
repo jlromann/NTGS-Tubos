@@ -1,9 +1,17 @@
-# Configuración para compilar en Windows con PyInstaller
+# Usar Windows con Python 3.9 x64
 image: Visual Studio 2022
 
+environment:
+  matrix:
+    - PYTHON: "C:\\Python39-x64"
+
+install:
+  - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+  - python -m pip install --upgrade pip
+  - python -m pip install pyinstaller pandas matplotlib tk
+
 build_script:
-  - cmd: pip install pyinstaller pandas matplotlib tk
-  - cmd: pyinstaller --onefile --windowed NTGS-Tubos.py
+  - python -m PyInstaller --onefile --windowed NTGS-Tubos.py
 
 artifacts:
   - path: dist\NTGS-Tubos.exe
